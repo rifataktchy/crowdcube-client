@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Login from "../components/Pages/Login";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../components/Pages/Register";
+import AddCampaign from "../components/Pages/AddCampaign";
 // import Home from "../components/Home/Home";
 // import HowtoHelp from "../components/HowtoHelp/HowtoHelp";
 // import DonationCampaigns from "../components/DonationCampaigns/DonationCampaigns";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
                  path: '/',
                 element : <Home></Home>
          }, 
+         {
+            path: '/newcampaign',
+            element : <AddCampaign></AddCampaign>
+        },
          {
             path: 'auth',
             element : <AuthLayout></AuthLayout>,

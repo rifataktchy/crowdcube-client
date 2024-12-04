@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth, updateProfile } from "firebase/auth";
 
 const Register = () => {
-  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const { createNewUser, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -14,47 +14,69 @@ const Register = () => {
     const form = new FormData(e.target);
     const name = form.get("name");
     const email = form.get("email");
-    const photo = form.get("photo");
     const password = form.get("password");
+    const photoURL = form.get("photo"); // Added photo URL
 
     // Password validation
     if (!/[A-Z]/.test(password)) {
-      setPasswordError("Password must have at least one uppercase letter.");
-      return;
-    }
-    if (!/[a-z]/.test(password)) {
-      setPasswordError("Password must have at least one lowercase letter.");
-      return;
-    }
-    if (!/[0-9]/.test(password)) {
-      setPasswordError("Password must have at least one number.");
-      return;
-    }
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
-      return;
-    }
+        setPasswordError("Password must have at least one uppercase letter.");
+        return;
+      }
+      if (!/[a-z]/.test(password)) {
+        setPasswordError("Password must have at least one lowercase letter.");
+        return;
+      }
+      if (password.length < 6) {
+        setPasswordError("Password must be at least 6 characters long.");
+        return;
+      }
 
     setPasswordError(""); // Clear password error if validation passes
 
     // Create new user
     createNewUser(email, password)
       .then((result) => {
-        const user = result.user;
-        setUser(user);
-        updateUserProfile({
-          displayName: name,
-          photoURL: photo,
+        console.log('User created at Firebase', result.user);
+        const createdAt = result?.user?.metadata?.creationTime;
+
+        const newUser = { name, email, createdAt };
+        console.log(newUser);
+
+        // Save new user info to the database
+        fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify(newUser),
         })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              alert('User created in database');
+            }
+          })
           .then(() => {
-            navigate("/"); // Redirect to home on successful registration
+            // Update the user's displayName and photoURL in Firebase after creation
+            const user = result.user;
+            updateProfile(user, {
+              displayName: name,  // Set display name from the form input
+              photoURL: photoURL, // Set photo URL from the form input (optional)
+            })
+              .then(() => {
+                console.log("User profile updated successfully");
+                navigate("/"); // Redirect to home on successful registration
+              })
+              .catch((error) => {
+                console.error("Error updating profile: ", error);
+              });
           })
           .catch((err) => {
             setError(err.message);
           });
       })
-      .catch((err) => {
-        setError(err.message);
+      .catch((error) => {
+        console.log('Error creating user:', error);
       });
   };
 
@@ -66,6 +88,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+
         navigate("/"); // Redirect after successful Google sign-in
       })
       .catch((err) => {
@@ -99,7 +122,7 @@ const Register = () => {
             <label className="label">
               <span className="label-text">Photo URL</span>
             </label>
-            <input name="photo" type="text" placeholder="Photo URL" className="input input-bordered" required />
+            <input name="photo" type="text" placeholder="Photo URL" className="input input-bordered" />
           </div>
 
           {/* Password Field */}

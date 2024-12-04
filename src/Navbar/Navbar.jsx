@@ -39,7 +39,7 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1 font-bold text-xl">
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/campaigns'>all Campaigns</NavLink></li>
-      <li><NavLink to='/howtohelp'>Add New Campaign</NavLink></li>
+      <li><NavLink to='/newcampaign'>Add New Campaign</NavLink></li>
       <li><NavLink to='/howtohelp'>My Campaign</NavLink></li>
       <li><NavLink to='/howtohelp'>My Donation</NavLink></li>
      
