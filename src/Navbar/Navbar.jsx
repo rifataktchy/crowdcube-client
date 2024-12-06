@@ -28,9 +28,10 @@ const Navbar = () => {
         tabIndex={0}
         className="menu  font-bold bg-[rgba(164,132,63,0.837)] menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow">
         <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/campaigns'>Donation Campaigns</NavLink></li>
-      <li><NavLink to='/howtohelp'>How to Help</NavLink></li>
-      <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+      <li><NavLink to='/allcampaigns'>all Campaigns</NavLink></li>
+      <li><NavLink to='/newcampaign'>Add New Campaign</NavLink></li>
+      <li><NavLink to='/howtohelp'>My Campaign</NavLink></li>
+      <li><NavLink to='/howtohelp'>My Donation</NavLink></li>
       </ul>
     </div>
     <Link className="" to='/'><img className="h-14 w-14 rounded-full" src={logo} alt=""/></Link>
@@ -38,10 +39,10 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-bold text-xl">
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/campaigns'>all Campaigns</NavLink></li>
+      <li><NavLink to='/allcampaigns'>all Campaigns</NavLink></li>
       <li><NavLink to='/newcampaign'>Add New Campaign</NavLink></li>
-      <li><NavLink to='/howtohelp'>My Campaign</NavLink></li>
-      <li><NavLink to='/howtohelp'>My Donation</NavLink></li>
+      <li><NavLink to='/mycampaigns'>My Campaign</NavLink></li>
+      <li><NavLink to='/mydonations'>My Donation</NavLink></li>
      
     </ul>
   </div>

@@ -5,6 +5,11 @@ import Login from "../components/Pages/Login";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../components/Pages/Register";
 import AddCampaign from "../components/Pages/AddCampaign";
+import AllCampaigns from "../components/Pages/AllCampaigns";
+import MyCampaigns from "../components/Pages/MyCampaigns";
+import UpdateCampaign from "../components/Pages/UpdateCampaign";
+import DetailPage from "../components/Pages/DetailPage.jsx";
+import MyDonations from "../components/Pages/MyDonation.jsx";
 // import Home from "../components/Home/Home";
 // import HowtoHelp from "../components/HowtoHelp/HowtoHelp";
 // import DonationCampaigns from "../components/DonationCampaigns/DonationCampaigns";
@@ -27,11 +32,35 @@ const router = createBrowserRouter([
             {
                  path: '/',
                 element : <Home></Home>
-         }, 
+         },
+         {
+            path: '/allcampaigns',
+            element : <AllCampaigns></AllCampaigns>,
+            loader: () => fetch('http://localhost:5000/campaigns')
+        }, 
          {
             path: '/newcampaign',
             element : <AddCampaign></AddCampaign>
         },
+        {
+            path: '/mycampaigns',
+            element : <MyCampaigns></MyCampaigns>
+        },
+        {
+            path: '/updatecampaigns/:id',
+            element : <UpdateCampaign></UpdateCampaign>,
+            loader: ({ params }) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+        },
+        {
+            path: '/campaign/:id',
+            element: <DetailPage />,
+            loader: ({ params }) => fetch(`http://localhost:5000/campaigns/${params.id}`),
+        },
+        {
+            path: '/myDonations',
+            element: <MyDonations />
+        },
+        
          {
             path: 'auth',
             element : <AuthLayout></AuthLayout>,
@@ -54,14 +83,13 @@ const router = createBrowserRouter([
         ],
     },
     // {
-    //     path: "/products/:id",
-    //     element: (<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>),  
-    //     loader: () => fetch('../allcampaigns.json'),
-    // },
-    // {
-    //     path: '*',
-    //     element : <NotFoundRedirect></NotFoundRedirect>
-    // },
+    //     path: "/campaigns/:id",
+    //     element: <DetailsPage></DetailsPage>,  
+    // },   
+    {
+        path: '*',
+        element : <h1>not</h1>
+    },
 ]
 );
 

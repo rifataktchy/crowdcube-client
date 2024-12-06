@@ -20,6 +20,24 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+
+                // update last login time
+                const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+                const loginInfo = { email, lastSignInTime };
+                console.log(email, lastSignInTime)
+
+                fetch(`http://localhost:5000/users`, {
+                    method: 'PATCH',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loginInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('sign in info updated in db', data)
+                    })
+
                 navigate(location?.state ? location.state : "/");
             })
             .catch((err) => {
@@ -35,6 +53,8 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                
+
                 navigate(location?.state ? location.state : "/");
             })
             .catch((err) => {
