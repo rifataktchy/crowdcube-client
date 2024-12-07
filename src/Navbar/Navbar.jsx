@@ -1,13 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
-// import { useContext } from "react";
-// import { AuthContext } from "../provider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../components/provider/AuthProvider";
 const Navbar = () => {
-  // const {user,logOut} = useContext(AuthContext);
+  const {user,logOut} = useContext(AuthContext);
     return (
         <div>
-           <div className="navbar bg-[rgba(164,132,63,0.837)] m-6 rounded-full w-12/12 mx-auto text-white">
+           <div className="navbar dark:bg-gray-800 text-black dark:text-white bg-[rgba(164,132,63,0.837)] m-6 rounded-full w-12/12 mx-auto text-white">
   <div className="navbar-start ">
     <div className="dropdown ">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,7 +47,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-4">
-    {/* <div>
+    <div>
       {
       user && user?.email ? (<div><img className="w-10 h-10 rounded-full mr-4" src={user?.photoURL} alt="" /></div>): (
         <NavLink className="p-2 rounded-lg font-bold text-xl" to='/auth/register'>Signup</NavLink>)  
@@ -58,10 +58,8 @@ const Navbar = () => {
         <button className="font-bold text-xl pr-2" onClick={logOut}>Signout</button>
       ) : (
       <NavLink className="p-2 rounded-lg font-bold text-xl" to='/auth/login'>Login</NavLink>)
-    } */}
+    }
 
-<NavLink className="p-2 rounded-lg font-bold text-xl" to='/auth/register'>Signup</NavLink>
-<NavLink className="p-2 rounded-lg font-bold text-xl" to='/auth/login'>Login</NavLink>
   </div>
 
 </div>

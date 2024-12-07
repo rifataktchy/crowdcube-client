@@ -10,6 +10,7 @@ import MyCampaigns from "../components/Pages/MyCampaigns";
 import UpdateCampaign from "../components/Pages/UpdateCampaign";
 import DetailPage from "../components/Pages/DetailPage.jsx";
 import MyDonations from "../components/Pages/MyDonation.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 // import Home from "../components/Home/Home";
 // import HowtoHelp from "../components/HowtoHelp/HowtoHelp";
 // import DonationCampaigns from "../components/DonationCampaigns/DonationCampaigns";
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
         },
         {
             path: '/mycampaigns',
-            element : <MyCampaigns></MyCampaigns>
+            element : (<PrivateRoute><MyCampaigns></MyCampaigns></PrivateRoute>),
+                
         },
         {
             path: '/updatecampaigns/:id',
