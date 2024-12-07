@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup, getAuth, updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
@@ -51,11 +52,6 @@ const Register = () => {
           body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              alert('User created in database');
-            }
-          })
           .then(() => {
             // Update the user's displayName and photoURL in Firebase after creation
             const user = result.user;
@@ -65,18 +61,39 @@ const Register = () => {
             })
               .then(() => {
                 console.log("User profile updated successfully");
-                navigate("/"); // Redirect to home on successful registration
+                Swal.fire({
+                  icon: "success",
+                  title: "Registration Successful",
+                  text: "You have successfully registered! Redirecting to home.",
+                }).then(() => {
+                  navigate("/"); // Redirect to home on successful registration
+                });
               })
               .catch((error) => {
                 console.error("Error updating profile: ", error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Profile Update Failed",
+                  text: error.message,
+                });
               });
           })
           .catch((err) => {
             setError(err.message);
+            Swal.fire({
+              icon: "error",
+              title: "Error",
+              text: err.message,
+            });
           });
       })
       .catch((error) => {
         console.log('Error creating user:', error);
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: error.message,
+        });
       });
   };
 
@@ -89,10 +106,21 @@ const Register = () => {
         const user = result.user;
         setUser(user);
 
-        navigate("/"); // Redirect after successful Google sign-in
+        Swal.fire({
+          icon: "success",
+          title: "Google Sign-In Successful",
+          text: "You have signed in successfully with Google!",
+        }).then(() => {
+          navigate("/"); // Redirect after successful Google sign-in
+        });
       })
       .catch((err) => {
         setError({ ...error, google: err.message });
+        Swal.fire({
+          icon: "error",
+          title: "Google Sign-In Failed",
+          text: `Reason: ${err.message}`,
+        });
       });
   };
 
@@ -142,7 +170,7 @@ const Register = () => {
 
           {/* Submit Button */}
           <div className="form-control mt-6">
-            <button type="submit" className="btn bg-[rgba(164,132,63,0.837)] hover:bg-[rgba(214,180,106,0.837)] text-white">
+            <button type="submit" className="btn bg-green-500 hover:bg-green-400 text-white">
               Register
             </button>
           </div>
@@ -154,7 +182,7 @@ const Register = () => {
         {/* Google Sign-in Button */}
         <div className="divider">OR</div>
         <div className="form-control">
-          <button onClick={handleGoogleSignIn} className="btn btn-outline bg-[rgba(164,132,63,0.837)] hover:bg-[rgba(214,180,106,0.837)] text-white">
+          <button onClick={handleGoogleSignIn} className="btn  bg-green-500 hover:bg-green-400 text-white">
             Continue with Google
           </button>
         </div>
@@ -171,5 +199,6 @@ const Register = () => {
 };
 
 export default Register;
+
 
 

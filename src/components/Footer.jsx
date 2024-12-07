@@ -2,14 +2,15 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-[rgba(164,132,63,0.837)] text-white py-10">
+    <footer className="bg-green-500 text-white py-10">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: About */}
           <div className='text-white'>
             <h4 className="text-xl font-semibold">About Us</h4>
             <p className="mt-2 text-white">
-              We are a community-driven platform dedicated to providing winter clothing and essentials to those in need. Your generous donations help families and individuals prepare for the cold months.
+            CrowdCube empowers creators and donors to make meaningful connections. 
+    Whether you're a visionary seeking support or a passionate backer, CrowdCube brings your goals to life.
             </p>
           </div>
 
@@ -40,7 +41,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-base-300 mt-8 pt-6 text-center">
-          <p className="text-sm text-white font-bold">© 2024 Cloth Donation Campaign. All rights reserved.</p>
+          <p className="text-sm text-white font-bold">© 2024 Crowd Cube Donation Campaign. All rights reserved.</p>
         </div>
       </div>
     </footer>

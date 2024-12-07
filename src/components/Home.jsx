@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick"; // npm install react-slick slick-carousel
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import slide1 from "../assets/slide1.jpg";
+import slide2 from "../assets/slide2.png";
+import slide3 from "../assets/slide3.jpg";
 const Home = () => {
   const [campaigns, setCampaigns] = useState([]);
 
@@ -38,7 +40,7 @@ const Home = () => {
         <Slider {...sliderSettings}>
           <div className="relative">
             <img
-              src="/images/slide1.jpg"
+              src={slide1}
               alt="Slide 1"
               className="w-full h-64 object-cover"
             />
@@ -53,7 +55,7 @@ const Home = () => {
           </div>
           <div className="relative">
             <img
-              src="/images/slide2.jpg"
+              src={slide2}
               alt="Slide 2"
               className="w-full h-64 object-cover"
             />
@@ -68,7 +70,7 @@ const Home = () => {
           </div>
           <div className="relative">
             <img
-              src="/images/slide3.jpg"
+              src={slide3}
               alt="Slide 3"
               className="w-full h-64 object-cover"
             />
@@ -90,7 +92,7 @@ const Home = () => {
           Running Campaigns
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {campaigns.length > 0 ? (
+          {campaigns.length > 0 || campaigns.length < 6  ? (
             campaigns.map((campaign) => (
               <div
                 className="campaign-card border rounded-lg overflow-hidden shadow-lg"
@@ -116,9 +118,8 @@ const Home = () => {
                     <strong>Deadline:</strong>{" "}
                     {new Date(campaign.deadline).toLocaleDateString()}
                   </p>
-                  <Link
-                    to={`/campaigns/${campaign._id}`}
-                    className="block text-center bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+                  <Link to={`/campaign/${campaign._id}`}
+                    className="block text-center bg-green-500 text-white py-2 rounded hover:bg-green-600"
                   >
                     See More
                   </Link>
@@ -131,26 +132,108 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Extra Section 1 */}
-      <section className="extra-section bg-gray-100 py-12 px-4 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-4">
-          Why Choose CrowdCube?
-        </h2>
-        <p className="text-center text-gray-700 max-w-3xl mx-auto">
-          CrowdCube empowers creators and donors to make meaningful connections.
-          Back creative ideas or bring your own to life!
-        </p>
-      </section>
+     {/* Extra Section 1 */}
+     <section className="extra-section bg-green-200 py-12 px-4 mt-12">
+  <h2 className="text-3xl font-bold text-center mb-4">
+    Why Choose CrowdCube?
+  </h2>
+  <p className="text-center text-gray-700 max-w-3xl mx-auto mb-8">
+    CrowdCube empowers creators and donors to make meaningful connections. 
+    Whether you're a visionary seeking support or a passionate backer eager to 
+    fuel innovative ideas, CrowdCube brings your goals to life.
+  </p>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    {/* Feature 1 */}
+    <div className="text-center">
+      <img
+        src="https://i.ibb.co/cCXfq21/dhaka2.jpg"
+        alt="Innovative Ideas"
+        className="mx-auto mb-4 w-34 h-34"
+      />
+      <h3 className="text-xl font-semibold">Innovative Ideas</h3>
+      <p className="text-gray-600 mt-2">
+        Back groundbreaking ideas across various domains, from technology and 
+        art to social causes and sustainability.
+      </p>
+    </div>
+    {/* Feature 2 */}
+    <div className="text-center">
+      <img
+        src="https://i.ibb.co/wcgYm8V/sylhet1.webp"
+        alt="Secure Donations"
+        className="mx-auto mb-4 w-34 h-34"
+      />
+      <h3 className="text-xl font-semibold">Secure Transactions</h3>
+      <p className="text-gray-600 mt-2">
+        Our platform ensures safe and transparent donation processes, so you can 
+        contribute with confidence.
+      </p>
+    </div>
+    {/* Feature 3 */}
+    <div className="text-center">
+      <img
+        src="https://i.ibb.co/7j9zTZt/ctg2.jpg"
+        alt="Global Community"
+        className="mx-auto mb-4 w-34 h-34"
+      />
+      <h3 className="text-xl font-semibold">Global Community</h3>
+      <p className="text-gray-600 mt-2">
+        Join a vibrant global community of changemakers working together to make 
+        a difference.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* Extra Section 2 */}
       <section className="extra-section py-12 px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
-        <ol className="list-decimal list-inside max-w-2xl mx-auto text-gray-700 space-y-2">
-          <li>Explore running campaigns and projects.</li>
-          <li>Donate or pledge support to campaigns you believe in.</li>
-          <li>Watch the impact your contributions make.</li>
-        </ol>
-      </section>
+  <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-gray-700">
+    {/* Step 1 */}
+    <div className="text-center">
+      <div className="rounded-full bg-green-500 text-white w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+        1
+      </div>
+      <h3 className="text-xl font-semibold">Explore Campaigns</h3>
+      <p className="mt-2">
+        Browse campaigns across categories like tech, art, education, and 
+        health. Find projects that align with your passion.
+      </p>
+    </div>
+    {/* Step 2 */}
+    <div className="text-center">
+      <div className="rounded-full bg-green-500 text-white w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+        2
+      </div>
+      <h3 className="text-xl font-semibold">Pledge Support</h3>
+      <p className="mt-2">
+        Make secure donations to campaigns that inspire you. Every contribution, 
+        no matter the size, makes a difference.
+      </p>
+    </div>
+    {/* Step 3 */}
+    <div className="text-center">
+      <div className="rounded-full bg-green-500 text-white w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+        3
+      </div>
+      <h3 className="text-xl font-semibold">See the Impact</h3>
+      <p className="mt-2">
+        Track the progress of campaigns you've supported and witness how your 
+        contributions bring ideas to life.
+      </p>
+    </div>
+  </div>
+  <div className="mt-8 text-center">
+    <Link
+      to="/allcampaigns"
+      className="bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600"
+    >
+      Start Exploring
+    </Link>
+  </div>
+</section>
+
     </div>
   );
 };

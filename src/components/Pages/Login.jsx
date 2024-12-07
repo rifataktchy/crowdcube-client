@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { userLogin, setUser } = useContext(AuthContext);
@@ -21,27 +22,34 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
 
-                // update last login time
+                // Update last login time
                 const lastSignInTime = result?.user?.metadata?.lastSignInTime;
                 const loginInfo = { email, lastSignInTime };
-                console.log(email, lastSignInTime)
 
                 fetch(`http://localhost:5000/users`, {
-                    method: 'PATCH',
+                    method: "PATCH",
                     headers: {
-                        'content-type': 'application/json'
+                        "content-type": "application/json",
                     },
-                    body: JSON.stringify(loginInfo)
+                    body: JSON.stringify(loginInfo),
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log('sign in info updated in db', data)
-                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log("Sign-in info updated in DB", data);
+                    });
 
                 navigate(location?.state ? location.state : "/");
             })
             .catch((err) => {
                 setError({ ...error, login: err.code });
+
+                // SweetAlert2 error alert
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Failed",
+                    text: `Reason: ${err.message}`,
+                    confirmButtonColor: "#FF0000", // Custom color for button
+                });
             });
     };
 
@@ -53,12 +61,19 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                
 
                 navigate(location?.state ? location.state : "/");
             })
             .catch((err) => {
                 setError({ ...error, google: err.message });
+
+                // SweetAlert2 popup for error
+                Swal.fire({
+                    icon: "error",
+                    title: "Google Sign-In Failed",
+                    text: `Reason: ${err.message}`,
+                    confirmButtonColor: "#FF0000",
+                });
             });
     };
 
@@ -104,12 +119,17 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn bg-[rgba(164,132,63,0.837)] hover:bg-[rgba(214,180,106,0.837)] text-white">Login</button>
+                        <button className="btn bg-green-500 hover:bg-green-400 text-white">
+                            Login
+                        </button>
                     </div>
                 </form>
                 <div className="divider">OR</div>
                 <div className="form-control">
-                    <button onClick={handleGoogleSignIn} className="btn btn-outline bg-[rgba(164,132,63,0.837)] hover:bg-[rgba(214,180,106,0.837)] text-white">
+                    <button
+                        onClick={handleGoogleSignIn}
+                        className="btn  bg-green-500 hover:bg-green-400 text-white"
+                    >
                         Continue with Google
                     </button>
                 </div>
@@ -126,3 +146,4 @@ const Login = () => {
 };
 
 export default Login;
+
