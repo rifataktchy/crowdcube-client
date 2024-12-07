@@ -40,6 +40,7 @@ const AddCampaign = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.insertedId) {
           alert("Campaign added successfully!");
           navigate("/"); // Redirect to home after successful campaign creation
