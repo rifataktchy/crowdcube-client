@@ -11,7 +11,7 @@ const MyCampaigns = () => {
   useEffect(() => {
     const fetchMyCampaigns = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/campaigns/${user.email}`);
+        const response = await fetch(`http://localhost:5000/campaigns?email=${user.email}`);
         const data = await response.json();
         setMyCampaigns(data);
       } catch (error) {

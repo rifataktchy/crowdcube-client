@@ -29,6 +29,7 @@ const AddCampaign = () => {
       userEmail: user?.email,
       userName: user?.displayName, // userName field will be sent as part of the campaign
     };
+    console.log(newCampaign)
 
     // Save the campaign data to the database
     fetch("http://localhost:5000/campaigns", {
