@@ -11,6 +11,7 @@ import UpdateCampaign from "../components/Pages/UpdateCampaign";
 import DetailPage from "../components/Pages/DetailPage.jsx";
 import MyDonations from "../components/Pages/MyDonation.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import NotFoundRedirect from "../components/NotFoundRedirect.jsx";
 // import Home from "../components/Home/Home";
 // import HowtoHelp from "../components/HowtoHelp/HowtoHelp";
 // import DonationCampaigns from "../components/DonationCampaigns/DonationCampaigns";
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
     // },   
     {
         path: '*',
-        element : <h1>not</h1>
+        element : <NotFoundRedirect></NotFoundRedirect>
     },
 ]
 );
