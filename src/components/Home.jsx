@@ -133,8 +133,8 @@ const Home = () => {
       </section>
 
      {/* Extra Section 1 */}
-     <section className="extra-section bg-green-200 py-12 px-4 mt-12">
-  <h2 className="text-3xl font-bold text-center mb-4">
+     <section className="extra-section bg-green-100 py-12 px-4 mt-12">
+  <h2 className="text-3xl font-bold text-center mb-4 font-black dark:text-black">
     Why Choose CrowdCube?
   </h2>
   <p className="text-center text-gray-700 max-w-3xl mx-auto mb-8">
@@ -164,7 +164,7 @@ const Home = () => {
         className="mx-auto mb-4 w-34 h-34"
       />
       <h3 className="text-xl font-semibold">Secure Transactions</h3>
-      <p className="text-gray-600 mt-2">
+      <p className="text-black mt-2">
         Our platform ensures safe and transparent donation processes, so you can 
         contribute with confidence.
       </p>

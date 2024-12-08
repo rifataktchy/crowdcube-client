@@ -67,7 +67,7 @@ const AddCampaign = () => {
     <div className="min-h-screen flex justify-center items-center">
       <div className="card bg-base-100 w-full max-w-lg shadow-2xl p-10 mb-6">
         <h1 className="text-2xl font-bold text-center">Add New Campaign</h1>
-        <form onSubmit={handleAddCampaign} className="card-body">
+        <form onSubmit={handleAddCampaign} className="card-body dark:text-black">
           {/* Campaign Title */}
           <div className="form-control">
             <label className="label">

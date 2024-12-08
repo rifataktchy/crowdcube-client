@@ -13,7 +13,7 @@ const MyCampaigns = () => {
       try {
         const response = await fetch(`http://localhost:5000/campaigns?email=${user.email}`);
         const data = await response.json();
-        console.log(data);
+
         setMyCampaigns(data);
       } catch (error) {
         console.error("Failed to fetch user campaigns:", error);
@@ -81,7 +81,7 @@ const MyCampaigns = () => {
               {myCampaigns.map((campaign, index) => (
                 <tr
                   key={campaign._id}
-                  className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"} hover:bg-gray-200`}
+                  className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"} hover:bg-gray-200 text-black`}
                 >
                   <td className="py-2 px-4 border border-gray-300 text-center">{campaign.title}</td>
                   <td className="py-2 px-4 border border-gray-300 text-center">{campaign.type}</td>

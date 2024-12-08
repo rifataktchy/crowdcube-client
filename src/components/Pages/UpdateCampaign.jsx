@@ -71,7 +71,7 @@ const UpdateCampaign = () => {
                 </p>
             </div>
             <div className="card bg-base-100 w-full shrink-0 shadow-2xl">
-                <form onSubmit={handleUpdateCampaign} className="card-body">
+                <form onSubmit={handleUpdateCampaign} className="card-body dark:text-black">
                     {/* Campaign Title */}
                     <div className="form-control">
                         <label className="label">
