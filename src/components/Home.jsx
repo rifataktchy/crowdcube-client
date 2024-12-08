@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch campaigns from the database
-    fetch("http://localhost:5000/campaigns") // Replace with your API endpoint
+    fetch("https://crowdcube-server-eight.vercel.app/campaigns") // Replace with your API endpoint
       .then((res) => res.json())
       .then((data) => {
         const runningCampaigns = data.filter(
@@ -99,7 +99,7 @@ const Home = () => {
                 key={campaign._id}
               >
                 <img
-                  src={`/images/campaigns/${campaign.image}.jpg`} // Replace with your image path logic
+                  src={`https://i.ibb.co/VC0YYnG/raj1.jpg`} 
                   alt={campaign.title}
                   className="w-full h-48 object-cover"
                 />

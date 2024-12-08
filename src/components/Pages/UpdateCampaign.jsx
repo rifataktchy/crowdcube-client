@@ -27,10 +27,10 @@ const UpdateCampaign = () => {
             userName: formData.get("userName"), // User name (added)
         };
 
-        console.log("Updated Campaign Data:", updatedCampaign);
+      
 
         // Send updated data to the server
-        fetch(`http://localhost:5000/campaigns/${campaign._id}`, {
+        fetch(`https://crowdcube-server-eight.vercel.app/campaigns/${campaign._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

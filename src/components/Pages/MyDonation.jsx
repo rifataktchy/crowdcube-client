@@ -8,7 +8,7 @@ const MyDonations = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/donation?email=${user.email}`)
+            fetch(`https://crowdcube-server-eight.vercel.app/donation?email=${user.email}`)
                 .then((res) => res.json())
                 .then((data) => {
                     setDonations(data);

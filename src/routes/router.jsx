@@ -38,7 +38,7 @@ const router = createBrowserRouter([
          {
             path: '/allcampaigns',
             element : <AllCampaigns></AllCampaigns>,
-            loader: () => fetch('http://localhost:5000/campaigns')
+            loader: () => fetch('https://crowdcube-server-eight.vercel.app/campaigns')
         }, 
          {
             path: '/newcampaign',
@@ -52,12 +52,12 @@ const router = createBrowserRouter([
         {
             path: '/updatecampaigns/:id',
             element : <UpdateCampaign></UpdateCampaign>,
-            loader: ({ params }) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+            loader: ({ params }) => fetch(`https://crowdcube-server-eight.vercel.app/campaigns/${params.id}`)
         },
         {
             path: '/campaign/:id',
             element: (<PrivateRoute><DetailPage /></PrivateRoute>),
-            loader: ({ params }) => fetch(`http://localhost:5000/campaigns/${params.id}`),
+            loader: ({ params }) => fetch(`https://crowdcube-server-eight.vercel.app/campaigns/${params.id}`),
         },
         {
             path: '/myDonations',

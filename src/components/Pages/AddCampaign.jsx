@@ -33,7 +33,7 @@ const AddCampaign = () => {
   
 
     // Save the campaign data to the database
-    fetch("http://localhost:5000/campaigns", {
+    fetch("https://crowdcube-server-eight.vercel.app/campaigns", {
       method: "POST",
       headers: {
         "content-type": "application/json",

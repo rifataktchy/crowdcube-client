@@ -37,14 +37,14 @@ const Register = () => {
     // Create new user
     createNewUser(email, password)
       .then((result) => {
-        console.log('User created at Firebase', result.user);
+    
         const createdAt = result?.user?.metadata?.creationTime;
 
         const newUser = { name, email, createdAt };
-        console.log(newUser);
+        
 
         // Save new user info to the database
-        fetch('http://localhost:5000/users', {
+        fetch('https://crowdcube-server-eight.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json',

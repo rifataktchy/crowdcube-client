@@ -11,7 +11,7 @@ const MyCampaigns = () => {
   useEffect(() => {
     const fetchMyCampaigns = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/campaigns?email=${user.email}`);
+        const response = await fetch(`https://crowdcube-server-eight.vercel.app/campaigns?email=${user.email}`);
         const data = await response.json();
 
         setMyCampaigns(data);
@@ -38,7 +38,7 @@ const MyCampaigns = () => {
     }).then(async (result) => {
         if (result.isConfirmed) {
             try {
-                const response = await fetch(`http://localhost:5000/campaigns/${campaignId}`, {
+                const response = await fetch(`https://crowdcube-server-eight.vercel.app/campaigns/${campaignId}`, {
                     method: "DELETE",
                 });
 
