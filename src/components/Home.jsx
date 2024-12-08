@@ -11,7 +11,7 @@ const Home = () => {
   const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
-    // Fetch campaigns from the database
+
     fetch("https://crowdcube-server-eight.vercel.app/campaigns") // Replace with your API endpoint
       .then((res) => res.json())
       .then((data) => {

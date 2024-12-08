@@ -28,7 +28,7 @@ const AddCampaign = () => {
       deadline,
       image,
       userEmail: user?.email,
-      userName: user?.displayName, // userName field will be sent as part of the campaign
+      userName: user?.displayName, 
     };
   
 
