@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddCampaign = () => {
   const { user } = useContext(AuthContext); 
@@ -29,7 +30,7 @@ const AddCampaign = () => {
       userEmail: user?.email,
       userName: user?.displayName, // userName field will be sent as part of the campaign
     };
-    console.log(newCampaign)
+  
 
     // Save the campaign data to the database
     fetch("http://localhost:5000/campaigns", {
@@ -41,14 +42,24 @@ const AddCampaign = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        
         if (data.insertedId) {
-          alert("Campaign added successfully!");
-          navigate("/"); // Redirect to home after successful campaign creation
+          Swal.fire({
+            icon: "success",
+            title: "Campaign Added!",
+            text: "Your campaign has been successfully added.",
+          }).then(() => {
+            navigate("/"); // Redirect to home after successful campaign creation
+          });
         }
       })
       .catch((err) => {
         setError(err.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops!",
+          text: `An error occurred: ${err.message}`,
+        });
       });
   };
 
@@ -121,7 +132,7 @@ const AddCampaign = () => {
             </label>
             <input
               name="image"
-              type="text"
+              type="photo"
               placeholder="Image URL"
               className="input input-bordered"
               required
@@ -158,7 +169,7 @@ const AddCampaign = () => {
 
           {/* Submit Button */}
           <div className="form-control mt-6">
-            <button type="submit" className="btn bg-[rgba(164,132,63,0.837)] hover:bg-[rgba(214,180,106,0.837)] text-white">
+            <button type="submit" className="btn bg-green-500 hover:bg-green-400 text-white">
               Add Campaign
             </button>
           </div>

@@ -13,6 +13,7 @@ const MyCampaigns = () => {
       try {
         const response = await fetch(`http://localhost:5000/campaigns?email=${user.email}`);
         const data = await response.json();
+        console.log(data);
         setMyCampaigns(data);
       } catch (error) {
         console.error("Failed to fetch user campaigns:", error);
@@ -91,14 +92,14 @@ const MyCampaigns = () => {
                     <div className="card-actions justify-end join join-vertical">
                       {/* Edit button */}
                       <Link to={`/updatecampaigns/${campaign._id}`}>
-                        <button className="btn join-item">Edit</button>
+                        <button className="btn join-item bg-green-500 hover:bg-green-400">Update</button>
                       </Link>
                       {/* Delete button */}
                       <button
                         onClick={() => handleDelete(campaign._id)} // Use _id here to delete by unique identifier
-                        className="btn join-item bg-red-500"
+                        className="btn join-item bg-green-500 hover:bg-green-400"
                       >
-                        X
+                        Delete
                       </button>
                     </div>
                   </td>

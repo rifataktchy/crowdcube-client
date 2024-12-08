@@ -39,7 +39,7 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-bold text-xl">
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/allcampaigns'>all Campaigns</NavLink></li>
+      <li><NavLink to='/allcampaigns'>All Campaigns</NavLink></li>
       <li><NavLink to='/newcampaign'>Add New Campaign</NavLink></li>
       <li><NavLink to='/mycampaigns'>My Campaign</NavLink></li>
       <li><NavLink to='/mydonations'>My Donation</NavLink></li>

@@ -54,20 +54,25 @@ const DetailPage = () => {
                 text: "Something went wrong. Please try again.",
                 icon: "error",
                 confirmButtonText: "Ok",
+                confirmButtonColor: "#28a745",
             });
         }
     };
 
     return (
-        <div className="p-6">
+        <div className="p-6 flex flex-col items-center justify-center">
+      <img src={campaign.image} alt="Campaign" className="w-100 h-100 object-cover" />
             <h1 className="text-3xl font-bold text-center">{campaign.title}</h1>
             <p className="text-center text-gray-600 mt-2">{campaign.description}</p>
+           
+
 
             <div className="mt-6 flex flex-col gap-4">
-                <p><strong>Type:</strong> {campaign.type}</p>
+         
                 <p><strong>Minimum Donation:</strong> ${campaign.minimumDonation}</p>
                 <p><strong>Deadline:</strong> {campaign.deadline}</p>
                 <p><strong>Creator:</strong> {campaign.userName} ({campaign.userEmail})</p>
+                
             </div>
 
             <div className="text-center mt-6">

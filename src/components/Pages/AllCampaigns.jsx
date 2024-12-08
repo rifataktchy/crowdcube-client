@@ -38,7 +38,7 @@ const AllCampaigns = () => {
                                 <td className="py-2 px-4 border border-gray-300">{campaign.userName} ({campaign.userEmail})</td>
                                 <td className="py-2 px-4 border border-gray-300">
                                     <Link to={`/campaign/${campaign._id}`}>
-                                        <button className="btn btn-primary">See More</button>
+                                        <button className="btn bg-green-500 hover:bg-green-400">See More</button>
                                     </Link>
                                 </td>
                             </tr>

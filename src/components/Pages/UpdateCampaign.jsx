@@ -59,7 +59,7 @@ const UpdateCampaign = () => {
     return (
         <div className="lg:w-3/4 mx-auto">
             <div className="text-center p-10">
-                <h1 className="text-5xl font-bold">Update Campaign!</h1>
+                <h1 className="text-3xl font-bold">Update Campaign!</h1>
                 <p className="py-6">
                     Update the details of your campaign below.
                 </p>
@@ -123,22 +123,10 @@ const UpdateCampaign = () => {
             <input name="deadline" type="date" className="input input-bordered" required />
           </div>
 
-          {/* Image/Thumbnail */}
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Image/Thumbnail</span>
-            </label>
-            <input
-              name="image"
-              type="text"
-              placeholder="Image URL"
-              className="input input-bordered"
-              required
-            />
-          </div>
+          
 
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Update Campaign</button>
+                        <button className="btn bg-green-500 hover:bg-green-400">Update Campaign</button>
                     </div>
                 </form>
             </div>
