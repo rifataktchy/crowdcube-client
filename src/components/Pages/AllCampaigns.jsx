@@ -1,4 +1,3 @@
-
 import { useLoaderData, Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -15,13 +14,13 @@ const AllCampaigns = () => {
                 <table className="table-auto w-full border border-gray-300 shadow-lg">
                     <thead className="bg-gray-800 text-white">
                         <tr>
-                            <th className="py-2 px-4 border border-gray-300">Title</th>
-                            <th className="py-2 px-4 border border-gray-300">Type</th>
-                            <th className="py-2 px-4 border border-gray-300">Description</th>
-                            <th className="py-2 px-4 border border-gray-300">Minimum Donation</th>
-                            <th className="py-2 px-4 border border-gray-300">Deadline</th>
-                            <th className="py-2 px-4 border border-gray-300">Creator</th>
-                            <th className="py-2 px-4 border border-gray-300">Actions</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Title</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Type</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Description</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Minimum Donation</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Deadline</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Creator</th>
+                            <th className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,15 +29,15 @@ const AllCampaigns = () => {
                                 key={campaign._id}
                                 className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"} hover:bg-gray-200`}
                             >
-                                <td className="py-2 px-4 border border-gray-300">{campaign.title}</td>
-                                <td className="py-2 px-4 border border-gray-300">{campaign.type}</td>
-                                <td className="py-2 px-4 border border-gray-300">{campaign.description}</td>
-                                <td className="py-2 px-4 border border-gray-300">${campaign.minimumDonation}</td>
-                                <td className="py-2 px-4 border border-gray-300">{campaign.deadline}</td>
-                                <td className="py-2 px-4 border border-gray-300">{campaign.userName} ({campaign.userEmail})</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">{campaign.title}</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">{campaign.type}</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">{campaign.description}</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">${campaign.minimumDonation}</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">{campaign.deadline}</td>
+                                <td className="py-2 px-4 border border-gray-300 text-xs sm:text-sm">{campaign.userName} ({campaign.userEmail})</td>
                                 <td className="py-2 px-4 border border-gray-300">
                                     <Link to={`/campaign/${campaign._id}`}>
-                                        <button className="btn bg-green-500 hover:bg-green-400">See More</button>
+                                        <button className="btn bg-green-500 hover:bg-green-400 text-xs sm:text-sm">See More</button>
                                     </Link>
                                 </td>
                             </tr>
