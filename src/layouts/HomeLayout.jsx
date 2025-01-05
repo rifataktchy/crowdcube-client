@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../Navbar/Navbar";
 import { useEffect, useState } from "react";
+import lightModeImage from "../assets/light-mode-image.png"; // Light mode image
+import darkModeImage from "../assets/dark-mode-image.png"; // Dark mode image
 
 const HomeLayout = () => {
   // State to manage theme
@@ -34,20 +36,35 @@ const HomeLayout = () => {
         <Navbar />
       </div>
 
-      {/* Toggle Theme Button */}
-      <div className="fixed top-4 right-4 z-20">
-        <button
-          onClick={toggleTheme}
-          className="px-10 py-2 rounded bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-        >
-          {isDarkMode ? "Light Mode" : "Dark Mode"}
-        </button>
-      </div>
+      {/* Toggle Area */}
+      <div className="fixed top-4 right-4 z-20 flex flex-col items-center">
+  {/* Clickable Image */}
+  {/* <button
+    onClick={toggleTheme} // Click handler for the image
+    className="focus:outline-none"
+  >
+    <img
+      src={isDarkMode ? darkModeImage : lightModeImage}
+      alt={isDarkMode ? "Dark Mode" : "Light Mode"}
+      className="w-16 h-16 rounded-full mb-2"
+    />
+  </button> */}
+
+  {/* Button */}
+  {/* <button
+    onClick={toggleTheme}
+    className="px-10 py-2 rounded bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+  >
+    {isDarkMode ? "Light Mode" : "Dark Mode"}
+  </button> */}
+</div>
+
 
       {/* Main Content */}
-       <div className="flex-grow">
+      <div className="flex-grow overflow-hidden">
         <Outlet />
-      </div> 
+      </div>
+
       {/* Footer */}
       <Footer />
     </div>
@@ -55,3 +72,5 @@ const HomeLayout = () => {
 };
 
 export default HomeLayout;
+
+

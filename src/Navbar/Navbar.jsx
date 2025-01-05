@@ -1,16 +1,39 @@
 import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import logo from "../assets/logo.jpg";
+import lightModeImage from "../assets/light-mode-image.png"; // Light mode image
+import darkModeImage from "../assets/dark-mode-image.png"; // Dark mode image
 import "./Navbar.css";
-import { useContext } from "react";
 import { AuthContext } from "../components/provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Check user's previously saved theme or fallback to light mode
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  // Apply theme to <html> element and save to localStorage
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    if (isDarkMode) {
+      htmlElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      htmlElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
 
   return (
-    <div className="">
-      {/* Navbar container with sticky class */}
-      <div className="navbar sticky top-0 z-10 bg-[#3c7f39] w-full mx-auto  text-white shadow-md">
+    <div className="bg-[#3c7f39] w-full">
+      {/* Navbar container */}
+      <div className="navbar sticky top-0 z-10 w-11/12 mx-auto text-white shadow-md">
         <div className="navbar-start">
           {/* Dropdown for mobile view */}
           <div className="dropdown">
@@ -56,6 +79,13 @@ const Navbar = () => {
           <Link to="/">
             <img className="h-14 w-14 rounded-full" src={logo} alt="Logo" />
           </Link>
+          <button onClick={toggleTheme} className="focus:outline-none">
+          <img
+            src={isDarkMode ? darkModeImage : lightModeImage}
+            alt={isDarkMode ? "Dark Mode" : "Light Mode"}
+            className="w-12 h-12 ml-2 rounded-full"
+          />
+        </button>
         </div>
 
         {/* Navbar center for larger screens */}
@@ -105,14 +135,14 @@ const Navbar = () => {
           {/* Login/Logout Button */}
           {user && user?.email ? (
             <button
-              className="font-bold text-xl pr-2 hover:bg-green-600 px-3 py-1 rounded-lg"
+              className="font-bold text-xl pr-2 hover:bg-green-600 px-1 py-1 rounded-lg"
               onClick={logOut}
             >
               Signout
             </button>
           ) : (
             <NavLink
-              className="p-2 rounded-lg font-bold text-xl hover:bg-green-600"
+              className="p-1 rounded-lg font-bold text-xl hover:bg-green-600"
               to="/auth/login"
             >
               Login
@@ -120,6 +150,17 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+      {/* Light/Dark Mode Toggle */}
+      {/* <div className="flex justify-center items-center bg-gray-100 dark:bg-gray-800 py-4">
+        <button onClick={toggleTheme} className="focus:outline-none">
+          <img
+            src={isDarkMode ? darkModeImage : lightModeImage}
+            alt={isDarkMode ? "Dark Mode" : "Light Mode"}
+            className="w-16 h-16 rounded-full"
+          />
+        </button>
+      </div> */}
     </div>
   );
 };

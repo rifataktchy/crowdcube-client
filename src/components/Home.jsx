@@ -88,7 +88,7 @@ const Home = () => {
       </section>
 
       {/* Running Campaign Section */}
-      <section className="running-campaigns px-4">
+      <section className="running-campaigns px-4 w-11/12 mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8">
           Running Campaigns
         </h2>
@@ -137,7 +137,7 @@ const Home = () => {
       </section>
 
       {/* Extra Section with Lottie */}
-      <section className="extra-section bg-green-100 py-12 px-4 mt-12 flex flex-col md:flex-row items-center justify-center">
+      <section className="extra-section w-11/12 mx-auto bg-green-100 py-12 px-4 mt-12 flex flex-col md:flex-row items-center justify-center">
         {/* Lottie Animation */}
         <div className="w-full md:w-1/2">
           <Player
@@ -166,7 +166,7 @@ const Home = () => {
       </section>
 
           {/* Extra Section 2 */}
-          <section className="extra-section py-12 px-4 overflow-hidden">
+          <section className="extra-section py-12 px-4 ">
   <h2 className="text-3xl font-bold text-center mb-4">How It Works</h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-gray-700">
     {/* Step 1 */}
