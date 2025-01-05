@@ -133,7 +133,7 @@ const Login = () => {
                         Continue with Google
                     </button>
                 </div>
-                <p className="text-center font-semibold mt-4">
+                <p className="text-center font-semibold mt-4 dark:text-black">
                     Don't have an account?{" "}
                     <Link className="text-red-500" to="/auth/register">
                         Register

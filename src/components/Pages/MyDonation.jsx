@@ -39,7 +39,8 @@ const MyDonations = () => {
                     {donations.map((donation) => (
                         <div
                             key={donation._id}
-                            className="bg-white shadow-md rounded-lg overflow-hidden"
+                       
+                            className="overflow-hidden bg-white shadow-md rounded-lg"
                         >
                             <div className="p-4">
                                 <h2 className="text-xl font-bold">{donation.campaignTitle}</h2>

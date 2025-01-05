@@ -61,10 +61,11 @@ const MyCampaigns = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-center text-gray-800">My Campaigns</h1>
+      <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-black">My Campaigns</h1>
       {myCampaigns.length === 0 ? (
         <p className="text-center text-gray-600 mt-4">You have not created any campaigns yet.</p>
       ) : (
+      
         <div className="overflow-x-auto mt-6">
           <table className="table-auto w-full border border-gray-300 shadow-lg">
             <thead className="bg-gray-800 text-white">

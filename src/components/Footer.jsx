@@ -1,12 +1,13 @@
-
+import logo from "../assets/logo.jpg";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-500 text-white py-10">
+    <footer className="bg-[#3c7f39] text-white py-10">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: About */}
           <div className='text-white'>
+            <img className="h-14 w-14 rounded-full" src={logo} alt="Logo" />
             <h4 className="text-xl font-semibold">About Us</h4>
             <p className="mt-2 text-white">
             CrowdCube empowers creators and donors to make meaningful connections. 
@@ -19,9 +20,9 @@ const Footer = () => {
             <h4 className="text-xl font-semibold">Quick Links</h4>
             <ul className="mt-2 space-y-2 text-white">
               <li><a href="/" className=" hover:underline">Home</a></li>
-              <li><a href="/campaigns" className=" hover:underline">Campaigns</a></li>
-              <li><a href="/howtohelp" className=" hover:underline">How to Help</a></li>
-              <li><a href="/dashboard" className=" hover:underline">Dashboard</a></li>
+              <li><a href="/allcampaigns" className=" hover:underline">Campaigns</a></li>
+              <li><a href="/auth/login" className=" hover:underline">Add campaign</a></li>
+              <li><a href="/auth/login" className=" hover:underline">Donation</a></li>
             </ul>
           </div>
 

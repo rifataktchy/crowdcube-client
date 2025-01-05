@@ -1,5 +1,5 @@
 .active{
-    background-color: rgba(68, 163, 76, 0.837);
+    background-color: rgba(61, 141, 68, 0.837);
 }
 .menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
     --tw-bg-opacity: 1;

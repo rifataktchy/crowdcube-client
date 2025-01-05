@@ -84,7 +84,7 @@ const DetailPage = () => {
             </div>
 
             <div className="text-center mt-6">
-                <button onClick={handleDonate} className="btn bg-green-500 hover:bg-green-400">Donate</button>
+                <button onClick={handleDonate} className="btn bg-[#3c7f39] text-white hover:bg-green-400">Donate</button>
             </div>
         </div>
     );
